@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Giriş Yap</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Giriş Yap</h2>
+        <form method="POST" class="login-form"> 
+            <label for="email">E-Posta:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Şifre:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Giriş</button>
+        </form>
+        <p>Hesabınız yok mu? <a href="{{ url_for('signup') }}">Kayıt Ol</a></p>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="messages">
+              {% for message in messages %}
+                <div>{{ message }}</div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
